@@ -3,6 +3,6 @@
 using namespace std;
 
 int main(){
-	cout << "코딩조지기!" << endl;
+	cout << "ACM-ICPC Winner!" << endl;
 	return 0;
 }
