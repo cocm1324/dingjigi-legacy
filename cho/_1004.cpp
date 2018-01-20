@@ -39,8 +39,7 @@ int includeFunc(int x1, int y1, int x2, int y2, int cx, int cy, int r){
 
 int main(){
 	int testCase = 0;
-	int x1, y1, x2, y2;
-	int cx, cy, r;
+	int x1, y1, x2, y2;	int cx, cy, r;
 	int common, start, end;
 	int system = 0;
 	int temp = 0;
