@@ -59,5 +59,5 @@ float shadeCalc(int x, int y, int n, int m, char grid[][MAX_SIZE]){
 }
 
 void shadify(int x, int y, int xpos, int ypos, char grid[][MAX_SIZE], int shadeGrid[][MAX_SIZE]){
-
+  
 }
