@@ -7,6 +7,8 @@ as I post  my codes below, there are exactly tremendous difference in time consu
 here is my codes ..... */ 
 
 ///////////////////////////////////
+/// written by jaewon Yoon 4. 8 ///
+///////////////////////////////////
 #include<stdio.h>
 #include<time.h>
 #define MAXSIZE 1000
