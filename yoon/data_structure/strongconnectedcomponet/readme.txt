@@ -1,1 +1,7 @@
-how i solve strong connected component using dfs 
+I solved strong connected component using dfs 
+
+
+
+if you want to change input file,  
+
+change macro #define FILENAME  '      '    <-- 
