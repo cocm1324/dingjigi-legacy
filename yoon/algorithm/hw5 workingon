@@ -1,0 +1,119 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include "debug.h"
+#define INF 1000000
+#define FILENAME "input.txt"
+#define point print_debug()
+#define MAX 300
+int **basic_array; 
+int vertex_count = 0;
+char name[MAX][MAX];
+char temp_array[MAX][MAX];
+int countV(FILE *fd){
+	char buf[300] = {0,};
+	fd = fopen(FILENAME, "rb");
+	fgets(buf, sizeof(buf), fd);
+	int i =0 ;
+	int count =0;
+	int n1 =0, n2 = 0; 
+	while(buf[i] != '\n'){
+		if(buf[i] != ' ' && buf[i] != '\t'){
+			//printf("%c",buf[i]); 
+			if((buf[i-1]== ' ' || buf[i-1] == '\t') && i-1 >=0)
+			{
+			 count++;
+			 //printf("%c, %d\n",buf[i], count); 
+			 n1++;
+			 name[n1][n2] = '\0';
+			}
+			name[n1][n2]= buf[i];
+			if(n1 ==0) n1++;
+			i++;
+			n2++;
+		}
+		else i++;
+	}
+	
+	return count;
+}
+
+void read_array(FILE *fd, int vertex_count){
+	basic_array = (int **)malloc(sizeof(int*)*(vertex_count+1)); //row 
+	for(int i = 0; i <vertex_count; i++){
+	*(basic_array+i) = (int*) malloc(sizeof(int)*(vertex_count+1)); //column
+	}
+	fd = fopen(FILENAME, "rb"); 
+	char temp_buf[300]; 
+	char read_buf[300];// 
+	int temp=0;
+	int j = 0;
+	int n1 =0, n2 = 0;
+	fgets(temp_buf, sizeof(temp_buf), fd);
+	for(int i =0 ; i <vertex_count; i++){
+		j = 0, n2 = 0;
+		temp_buf[0] = '\0';
+		fgets(temp_buf, sizeof(temp_buf), fd);
+		while(temp_buf[j] !=' ' && temp_buf[j] != '\t') j++; 
+		while(temp_buf[j] != '\n'){
+		if(temp_buf[j] != ' ' && temp_buf[j] != '\t'){			//공백이 안나올때까지  
+			if(temp_buf[j-1]== ' ' || temp_buf[j-1] == '\t') // 이전 인덱스가 공백이었다면 
+			{
+			 n1++; 	
+			 temp_array[n1][n2] = '\0';
+			}
+			temp_array[n1][n2]= temp_buf[j];
+			j++;
+			n2++;
+		}
+		else j++;
+			}
+		for(int k=0; k <vertex_count;k++){
+			if(**(temp_array+(k+1)) == 'I') basic_array[i][k] = 1000000;
+			else
+			basic_array[i][k] = atoi(*(temp_array+(k+1)));
+			}
+		n1 = 0; n2 = 0;
+	}
+}
+void test_print(int **array){
+	for(int i =0 ; i <vertex_count; i++){
+		for(int j = 0; j <vertex_count; j++){
+		printf("%d ", array[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+int main(){
+	FILE *fd; 
+	int vertex_count = countV(fd);
+	printf("%d\n",vertex_count);
+	read_array(fd,vertex_count);
+	for(int i = 0 ; i < vertex_count; i++){
+		for(int j = 0; j<vertex_count; j++){
+			printf("%d ", basic_array[i][j]);
+		}
+		printf("\n");
+	}
+	test_print(basic_array);
+}
+
+
+
+/* 
+for(int n1 = 1; n1<= vertex_count; n1++){
+		for(int n2 =0; n2< sizeof(name[n1]); n2++){
+			printf("%c",name[n1][n2]);
+		}
+		printf("\n");
+	}
+*/ 
+
+/*
+while(read_buf[i]!=' ' && read_buf[i] !='\t')
+	{   //  첫번째 공백이 나올 때까지 읽어들여옴
+		continue;
+		i++;
+	}	
+	*/
