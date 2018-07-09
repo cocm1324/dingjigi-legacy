@@ -22,3 +22,4 @@ output1 =input1;
 printf("%d %d\n", output1, output2); 
 return 0; 
 }
+/* */ 
