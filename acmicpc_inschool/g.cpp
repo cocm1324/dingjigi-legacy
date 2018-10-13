@@ -6,6 +6,7 @@ int main(){
     int n, k;
     int record[100];
     int flag = 1;
+    int tag = 0;
 
     cin >> n >> k;
     for(int i = 0; i < n; i++){
@@ -14,7 +15,7 @@ int main(){
 
     for(int i = 0; i < n; i++){
         if(record[i] == i - 1){
-            
+            for(int j = )
         }
     }
 
