@@ -25,5 +25,5 @@ int main(){
         y_coord.push_back(y_temp);
     }
 
-    
+    for()
 }
